@@ -1,5 +1,5 @@
 # nodejs-login-system
-A login system built on Node.js featuring user roles and user administration.      
+A login system built on Node.js featuring user roles and user administration.          
 **Features:**
 - Encrypted password
 - User roles
