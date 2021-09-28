@@ -1,0 +1,26 @@
+Route Plan:
+Local Host: http:/127.0.0.0:3000
+
+Route				URL						HTTP Verbs	Router		Comment
+==========================================================================================================================
+/				localhost:3000/					GET		Index		Homepage
+/about				localhost:3000/about				GET		About		About information
+/admin				localhost:3000/admin				GET		Admin		Admin page to edit users
+/contact			localhost:3000/conatct				GET		Contact		Contact information
+/help				localhost:3000/help				GET		Help		Help information
+/login				localhost:3000/login				GET		Login		Login
+/admin/deleteuser/:user		localhost:3000/admin/deleteuser/:user		POST		Admin		Deletes a user. Takes the user as a parameter with /:user
+/admin/edituserpassword/:user	localhost:3000/admin/edituserpassword/:user	POST		Admin		Edits a users password. Takes the user as a parameter with /:user
+/admin/edituserrole/:user	localhost:3000/admin/edituserrole/:user		POST		Admin		Edits a users role. Takes the user as a parameter with /:user
+/admin/adduser			localhost:3000/admin/adduser			POST		Admin		Adds a user to the database
+/logout				localhost:3000/logout				GET		Index		Logs a user out of the system
+/cancel				localhost:3000/login/cancel			GET		Login		Cancels the login and sends the user to the homepage
+/login				localhost:3000/login/login			POST		Login		Logs the user into the system or displays an error message
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <%- include('./partials/nav.ejs') %>
+    <br>
+
+    <!-- <%if(error){ %> -->
+       <p><%= error %></p>
+    <!-- <% } %> -->
+    <br>
+<div class="container-fluid mt-3">
+    <form action="/login/login" method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="submit">
+    </form>
+    <form action="/login/cancel" METHOD="GET">
+      <input type="submit" value="Cancel">
+    </form>
+</div>
+
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

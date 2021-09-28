@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <%- include('./partials/head.ejs') %>
+    <body>
+      <%- include('./partials/header.ejs') %>
+      <%- include('./partials/nav.ejs') %>
+
+      <!-- Show Users -->
+      <div class="container-fluid">
+        
+          <ul>
+            <!-- Displaying the users in the database -->
+              <% for(var i = 0; i < users.length; i++){ %>
+
+                <!-- Button to display user details and to edit user -->
+                  <li><b>Username:</b> <%= users[i].name; %>  - <button onclick="show('user/<%=users[i].name%>')">View/Edit User</button></li>
+                
+                <!-- Hidden by default. -->
+                <div id="user/<%=users[i].name%>" style="display:none;">
+                  <b>&nbsp;Role: </b> <%= users[i].role; %><br>
+
+                  <!-- Edit user password -->
+                  <form action="/admin/editUserPassword/<%=users[i].name%>" method="POST">
+                    <input type="password" name="password" placeholder="New Password" required>
+                    <input type="submit", value="Set Password">
+                  </form>
+
+                  <!-- Edit user role -->
+                  <form action="/admin/editUserRole/<%=users[i].name%>" method="POST">
+                    <select id="roles" name="role">
+                      <option value="user">User</option>
+                      <option value="guest">Guest</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                    <input type="submit" value="Change Role">
+                  </form>
+
+                  <!-- Delete User -->
+                    <form action="/admin/deleteUser/<%=users[i].name%>" method="POST">
+                      <button name='<%= users[i].name; %>' onclick="return confirm('Confirm you wish to delete this user')">&nbsp;Delete User</button>
+                    </form>
+                  <p></p>
+                </div>
+              <% }%>
+          </ul>
+        
+
+        <!-- Add User -->
+        <button onclick="show('displayAddUser')">Add User</button>
+
+        <!-- Hidden by default -->
+        <div id="displayAddUser" style="display: none;">
+          <form action="/admin/addUser" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <select id="roles" name="role">
+              <option value="user">User</option>
+              <option value="guest">Guest</option>
+              <option value="admin">Admin</option>
+            </select>
+            <input type="submit">
+          </form>
+        </div>
+    </div>
+      <%- include('./partials/footer.ejs') %>
+
+      <script>
+        function show(elementID){
+      var element = document.getElementById(elementID);
+      if(element.style.display === "none"){
+          element.style.display = "block";
+      }
+      else {
+          element.style.display = "none";
+           }
+        }
+      </script>
+    </body>
+</html>
